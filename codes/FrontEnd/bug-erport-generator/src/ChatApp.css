@@ -1,0 +1,129 @@
+/* Chat Container */
+.chat-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8%;
+  height: 100vh;
+  background-color: #82b7f3; /* Darker blue background */
+  font-family: "Helvetica Neue", sans-serif; /* Modern font */
+}
+
+.chat-container {
+  width: 60%;
+  background-color: #fff;
+  border: 2px solid #ccc; /* Lighter border color */
+  border-radius: 20px; /* More rounded corners */
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease;
+}
+
+/* Chat Input and Output */
+.chat-input {
+  display: flex;
+  align-items: center;
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  padding: 12px; /* Slightly larger padding */
+  border: 2px solid #ccc; /* Lighter border color */
+  border-radius: 10px; /* More rounded corners */
+  font-size: 16px;
+  outline: none;
+}
+
+button {
+  padding: 12px 24px; /* Slightly larger padding */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px; /* More rounded corners */
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease; /* Smooth color transition */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Chat Output */
+.chat-output {
+  margin-top: 20px;
+  padding: 12px; /* Slightly larger padding */
+  border: 2px solid #ccc; /* Lighter border color */
+  border-radius: 20px; /* More rounded corners */
+  font-size: 16px;
+  min-height: 100px;
+  background-color: #f2f2f2; /* Light gray background */
+  overflow-y: auto;
+  animation: uncover 0.5s ease-in-out;
+}
+
+/* Title */
+.chat-title {
+  text-align: center;
+  font-size: 32px;
+  color: #444444; /* Dark gray text */
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-transform: uppercase; /* Uppercase title text */
+}
+
+/* Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes uncover {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    height: auto;
+    opacity: 1;
+  }
+}
+
+/* Typing animation */
+.typing-indicator {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  animation: typing 0.7s infinite;
+  margin-left: 4px;
+  font-weight: bold; /* Bold text during typing */
+  color: #686868; /* Dark gray color during typing */
+}
+
+@keyframes typing {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}

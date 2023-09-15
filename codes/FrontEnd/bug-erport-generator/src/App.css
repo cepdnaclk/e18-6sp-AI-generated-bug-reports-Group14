@@ -1,0 +1,97 @@
+/* Chat Container */
+.chat-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  padding-top: 8%;
+  height: 100vh;
+  background-color: #1d62ca; /* Dark blue background */
+}
+
+.chat-container {
+  width: 60%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease; /* Fade-in animation */
+}
+
+/* Chat Input and Output */
+.chat-input {
+  display: flex;
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* .chat-output:hover {
+  background-color: #a9d2ff;
+} */
+
+/* Chat Output */
+.chat-output {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  min-height: 100px;
+  background-color: #f9f9f9;
+  overflow-y: auto;
+  /* animation: fadeIn 0.5s ease; Fade-in animation */
+  animation: uncover 0.5s ease-in-out; /* Apply the uncover animation */
+}
+
+/* Title */
+.chat-title {
+  text-align: center;
+  font-size: 32px;
+  color: #fff; /* White text */
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes uncover {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    height: auto;
+    opacity: 1;
+  }
+}
