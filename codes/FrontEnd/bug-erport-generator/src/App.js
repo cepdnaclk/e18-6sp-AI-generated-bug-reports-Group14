@@ -1,28 +1,42 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./ChatApp.css";
 
 function ChatApp() {
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
   const [showOutput, setShowOutput] = useState(false);
-  const [isTyping, setIsTyping] = useState(false); // New state for typing effect
+  const [isTyping, setIsTyping] = useState(false); // New state for typing effect'
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     setInputText(e.target.value);
   };
 
-  const handleSubmit = async () => {
-    // Replace this section with code to send inputText to a backend (e.g., an API) for processing
-    const randomDelay = Math.random() * 2000 + 3000; // Random delay between 3 and 5 seconds
+  const sendRequest = () => {
+    // Display the loading message
+    setIsLoading(true);
+    setOutputText("Result is generating...");
 
-    setOutputText("");
-    setIsTyping(true); // Start typing animation
-    setTimeout(() => {
-      setOutputText(inputText);
-      setIsTyping(false); // Stop typing animation
-    }, randomDelay); // Simulate a delay (1 second) for typing effect
-
-    setShowOutput(true); // Show the output
+    // Make an Axios GET request to your URL
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos/1")
+      .then((response) => {
+        const randomDelay = Math.random() * 2000 + 3000;
+        // Hide the loading message and display the response data
+        setShowOutput(true);
+        setTimeout(() => {
+          setIsLoading(false);
+          setOutputText(JSON.stringify(response.data, null, 2));
+        }, randomDelay); // Simulate a delay (1 second) for typing effect
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error(error);
+        setIsLoading(false);
+        setOutputText("Error occurred while fetching data.");
+      });
+    console.log(isLoading);
   };
 
   const handleReset = () => {
@@ -50,16 +64,25 @@ function ChatApp() {
             value={inputText}
             onChange={handleInputChange}
           />
-          <button onClick={handleSubmit}>Submit</button>
+          <button onClick={sendRequest} disabled={isLoading}>
+            Submit
+          </button>
           <button onClick={handleReset}>Reset</button>
         </div>
         {showOutput && (
           <div className="chat-output">
-            {outputText}
-            {isTyping && (
+            {isLoading ? (
               <span className="typing-indicator">
                 Your bug report is generating...
               </span>
+            ) : (
+              <textarea
+                className="textarea"
+                rows="10"
+                cols="120"
+                value={outputText}
+                readOnly
+              />
             )}
           </div>
         )}

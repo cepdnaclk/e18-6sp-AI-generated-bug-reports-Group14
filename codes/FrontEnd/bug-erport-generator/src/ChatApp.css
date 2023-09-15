@@ -31,6 +31,7 @@ input[type="text"] {
   border: 2px solid #ccc; /* Lighter border color */
   border-radius: 10px; /* More rounded corners */
   font-size: 16px;
+  height: auto;
   outline: none;
 }
 
@@ -66,9 +67,11 @@ button:hover {
 /* Title */
 .chat-title {
   text-align: center;
-  font-size: 32px;
+  font-size: 40px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bolder;
   color: #444444; /* Dark gray text */
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   font-weight: 700;
   text-transform: uppercase; /* Uppercase title text */
 }
@@ -127,3 +130,15 @@ button:hover {
     transform: translateY(0);
   }
 }
+
+/* CSS for the textarea */
+textarea {
+  border: none; /* Add a border */
+  background-color: transparent; /* Make the background transparent */
+  padding: 10px; /* Add some padding for better appearance */
+  width: 100%; /* Make the textarea expand to the width of its container */
+  box-sizing: border-box; /* Include padding and border in the width */
+  outline: none; /* Remove the outline when focused */
+}
+
+
